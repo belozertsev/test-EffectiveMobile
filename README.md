@@ -35,6 +35,13 @@ sql-запросы для создания таблиц лежат в /Users/dat
 1. выполнить из Users последовательно `npm install` и `npm start`
 1. выполнить из History последовательно `npm install` и `npm start`
 
+Для создания БД и таблиц в консоли psql:
+1. `create database users_service; create database history_service;`
+2. `\connect users_service;`
+3. `CREATE TABLE users (id SERIAL, email VARCHAR(64) PRIMARY KEY NOT NULL, username VARCHAR(32) NOT NULL, password VARCHAR(32) NOT NULL, UNIQUE(email));`
+4. `\connect history_service`
+5. `CREATE TABLE events (id SERIAL PRIMARY KEY, user_id INTEGER, action VARCHAR(32), old_value VARCHAR(32), new_value VARCHAR(32), time_stamp TIMESTAMP);`
+
 ## Заметки
 Тестировал через Postman.
 На выполнение потрачено шесть часов.
